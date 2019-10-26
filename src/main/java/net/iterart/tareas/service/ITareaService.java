@@ -21,4 +21,8 @@ public interface ITareaService {
     public Tarea findOne(int id);
     
     public void save(Tarea tarea);
+    
+    public void delete(int id);
+    
+    public List<Tarea> buscar(String texto);
 }

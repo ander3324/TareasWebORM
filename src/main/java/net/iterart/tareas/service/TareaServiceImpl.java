@@ -31,13 +31,27 @@ public class TareaServiceImpl implements ITareaService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Tarea findOne(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return repo.findById(id).orElse(null);
     }
 
     @Override
+    @Transactional
     public void save(Tarea tarea) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        repo.save(tarea);
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        repo.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Tarea> buscar(String texto) {
+        return repo.buscarPorDescripcion(texto);
     }
     
 }
